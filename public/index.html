@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instamart Home</title> <link rel="stylesheet" href="./instamart.css">
+</head>
+
+<body>
+    <div class="backtotop">
+        <button onclick="window.scrollTo(0, 0)">Back to top</button> 
+    </div>
+
+    <div class="searchmain">
+        <input type="search" placeholder="Search for Daily Grocery" id="searchInput" onkeyup="filterProducts()">
+    </div>
+
+    <div class="locationhead">
+    <div class="location" onclick="setLocation()">
+        <img src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/instamart-assets/LocateWhite@5x.png"
+            alt="location">
+        <div id="location-display">
+            <h4>Add your location<br>
+                To see items in your area</h4>
+        </div>
+    </div>
+    <div class="profile">
+    </div>
+</div>
+
+    <div class="thumbnail">
+        <!-- <div class="sale"></div>
+        <div class="maincaterory">
+            <img src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_164/MERCHANDISING_BANNERS/IMAGES/MERCH/2025/9/19/a03e3e9c-e8e3-49a1-8c1a-cc8070b54646_Freshcorner.png"
+                alt="" class="product">
+            <img src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_164/MERCHANDISING_BANNERS/IMAGES/MERCH/2025/9/19/46993b49-52ab-4b68-aa11-3726b0acf486_Indulgencecorner.png"
+                alt="" class="product">
+            <img src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_164/MERCHANDISING_BANNERS/IMAGES/MERCH/2025/9/21/d4b9e261-1b04-44bb-8dac-d14a6a47884e_Mobileselectronics.png"
+                alt="" class="product">
+            <img src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_164/MERCHANDISING_BANNERS/IMAGES/MERCH/2025/9/19/46993b49-52ab-4b68-aa11-3726b0acf486_Indulgencecorner.png"
+                alt="" class="product">
+            <img src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_164/MERCHANDISING_BANNERS/IMAGES/MERCH/2025/9/19/46993b49-52ab-4b68-aa11-3726b0acf486_Indulgencecorner.png"
+                alt="" class="product">
+            <img src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_164/MERCHANDISING_BANNERS/IMAGES/MERCH/2025/9/19/46993b49-52ab-4b68-aa11-3726b0acf486_Indulgencecorner.png"
+                alt="" class="product">
+            <img src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_164/MERCHANDISING_BANNERS/IMAGES/MERCH/2025/9/19/46993b49-52ab-4b68-aa11-3726b0acf486_Indulgencecorner.png"
+                alt="" class="product">
+            <img src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_164/MERCHANDISING_BANNERS/IMAGES/MERCH/2025/9/19/46993b49-52ab-4b68-aa11-3726b0acf486_Indulgencecorner.png"
+                alt="" class="product">
+            <img src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_164/MERCHANDISING_BANNERS/IMAGES/MERCH/2025/9/19/46993b49-52ab-4b68-aa11-3726b0acf486_Indulgencecorner.png"
+                alt="" class="product">
+            <img src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_164/MERCHANDISING_BANNERS/IMAGES/MERCH/2025/9/19/46993b49-52ab-4b68-aa11-3726b0acf486_Indulgencecorner.png"
+                alt="" class="product">
+            <img src="https://instamart-media-assets.swiggy/image/upload/fl_lossy,f_auto,q_auto,w_164/MERCHANDISING_BANNERS/IMAGES/MERCH/2025/9/21/2a7dc59d-a232-422f-9b53-943ca2d72a21_d65afeae475e4bb5bd4f1f8da9d60503Homekitchen.png"
+                alt="" class="product">
+        </div> -->
+    </div>
+
+    <h2>Hot Deals</h2>
+    <div class="products" id="hot-deals-products">
+        <p>Loading hot deals...</p>
+    </div>
+
+    <h2>Instamart Specials (Dynamically Loaded)</h2>
+    <div class="products" id="json-products"> 
+        <p>Loading products from server...</p>
+    </div>
+    
+    <img src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_800/MERCHANDISING_BANNERS/IMAGES/MERCH/2025/9/10/2436d307-5a79-4dd1-9ea1-59c8fcac76b2_Stripbanner328x61All2.png"
+        alt="" class="adv">
+
+    <h2>Grocery & Kitchen</h2>
+    <div class="products" id="static-products"> 
+        <div class="oneproduct js-product">
+            <img src="https://up.yimg.com/ib/th/id/OIP.qfk84RkK9d7D9t5bzRa8QwHaHa?pid=Api&rs=1&c=1&qlt=95&w=106&h=106" alt="Detergent Powder">
+            <h3>Detergent Powder (1kg)</h3>
+            <p>₹150.00</p>
+            <button onclick="addToCart(13, 'Detergent Powder (1kg)', 150.00)">Add to Cart</button>
+        </div>
+        <div class="oneproduct js-product">
+            <img src="https://up.yimg.com/ib/th/id/OIP.uLnV5NCOyHRyKQZ1BFeAXgHaHa?pid=Api&rs=1&c=1&qlt=95&w=105&h=105" alt="Dishwashing Liquid">
+            <h3>Dishwashing Liquid (500ml)</h3>
+            <p>₹99.00</p>
+            <button onclick="addToCart(14, 'Dishwashing Liquid (500ml)', 99.00)">Add to Cart</button>
+        </div>
+        <div class="oneproduct js-product">
+            <img src="https://up.yimg.com/ib/th/id/OIP.pRYDHqrfbfjE8cp4Ime62gHaES?pid=Api&rs=1&c=1&qlt=95&w=192&h=111" alt="Tomato Ketchup">
+            <h3>Tomato Ketchup (500g)</h3>
+            <p>₹80.00</p>
+            <button onclick="addToCart(15, 'Tomato Ketchup (500g)', 80.00)">Add to Cart</button>
+        </div>
+        <div class="oneproduct js-product">
+            <img src="https://up.yimg.com/ib/th/id/OIP.YlCrzPhIVtJ5uHUF0sH-eAHaHa?pid=Api&rs=1&c=1&qlt=95&w=122&h=122" alt="Maggi Noodles">
+            <h3>Maggi Noodles (6-pack)</h3>
+            <p>₹95.00</p>
+            <button onclick="addToCart(16, 'Maggi Noodles (6-pack)', 95.00)">Add to Cart</button>
+        </div>
+        <div class="oneproduct js-product">
+            <img src="https://up.yimg.com/ib/th/id/OIP.uMnhLAkDceTxSwMamGXKpgHaHa?pid=Api&rs=1&c=1&qlt=95&w=109&h=109" alt="Pears Soap">
+            <h3>Pears Soap (3-pack)</h3>
+            <p>₹135.00</p>
+            <button onclick="addToCart(17, 'Pears Soap (3-pack)', 135.00)">Add to Cart</button>
+        </div>
+        <div class="oneproduct js-product">
+            <img src="https://up.yimg.com/ib/th/id/OIP.IAoRWaLy33IeWsCMjiF00QHaHa?pid=Api&rs=1&c=1&qlt=95&w=107&h=107" alt="Toothpaste">
+            <h3>Toothpaste (150g)</h3>
+            <p>₹110.00</p>
+            <button onclick="addToCart(18, 'Toothpaste (150g)', 110.00)">Add to Cart</button>
+        </div>
+    </div>
+
+    <h2>Your Cart</h2>
+    <div id="cart">
+        <p>Cart is empty.</p>
+    </div>
+    <p id="total">Total: ₹0</p>
+    <button class="lastbutton" onclick="checkout()">Checkout</button>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
