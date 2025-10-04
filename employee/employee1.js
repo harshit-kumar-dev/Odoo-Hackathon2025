@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             newTab.classList.add('active'); 
             
             // Redirect to the form page
-            window.location.href = 'employee-2.html';
+            window.location.href = 'employee2.html';
         });
 
         // 2. Upload Tab: Shows the success modal and handles data submission

@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // but the prompt requires redirection for adding to the index file.
         // For a seamless transition, you might want a small timeout here.
         setTimeout(() => {
-            window.location.href = `employee-1.html?${params.toString()}`;
+            window.location.href = `employee1.html?${params.toString()}`;
         }, 500); // 500ms delay to see the update before redirect
     });
 });
