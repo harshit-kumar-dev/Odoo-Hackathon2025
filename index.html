@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./index.css">
     
-    </head>
+   
+</head>
 <body class="font-sans antialiased">
 
     <header class="sticky top-0 z-50 header-bg backdrop-blur-md bg-opacity-80 shadow-lg">
@@ -118,17 +119,66 @@
         </section>
 
         <section id="pricing" class="py-20 sm:py-32">
-            <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="max-w-7xl mx-auto px-4 text-center">
                 <span class="text-neon-teal font-semibold uppercase tracking-widest">Pricing Matrix</span>
                 <h2 class="text-4xl font-bold mt-3 text-white">Scalable Finance, Predictable Cost</h2>
                 <p class="text-lg text-slate-400 mt-4">Pricing plans for the next decade of corporate efficiency.</p>
-                <div class="mt-12 bg-space-mid p-8 rounded-2xl border border-neon-violet/30 shadow-3xl">
-                    <h3 class="text-3xl font-bold text-white mb-4">Core Launch Plan</h3>
-                    <p class="text-5xl font-extrabold text-neon-teal mb-4">$0 <span class="text-xl font-normal text-slate-500">/ forever</span></p>
-                    <p class="text-slate-400 max-w-md mx-auto">Includes auto-setup for one Company and one Admin. Add up to 5 Employees/Managers free of charge.</p>
-                    <button class="mt-6 bg-neon-teal text-space-dark font-bold text-lg px-8 py-3 rounded-full hover:bg-white transition duration-300">
-                        Start Free Tier
-                    </button>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+                    
+                    <div class="pricing-card p-8 rounded-2xl shadow-3xl flex flex-col items-center">
+                        <h3 class="text-2xl font-bold text-white mb-2">1 Month Plan</h3>
+                        <p class="text-4xl font-extrabold text-neon-teal mb-4">$5 <span class="text-base font-normal text-slate-500">/ user/mo</span></p>
+                        <ul class="text-slate-300 text-sm mb-6 space-y-2">
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Automated setup</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Basic reporting dashboard</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Standard support</li>
+                        </ul>
+                        <button class="w-full bg-neon-violet text-white font-bold py-3 rounded-lg hover:bg-neon-teal hover:text-space-dark transition duration-300">
+                            Choose Plan
+                        </button>
+                    </div>
+
+                    <div class="pricing-card p-8 rounded-2xl shadow-3xl flex flex-col items-center">
+                        <h3 class="text-2xl font-bold text-white mb-2">3 Months Plan</h3>
+                        <p class="text-4xl font-extrabold text-neon-teal mb-4">$10 <span class="text-base font-normal text-slate-500">/ user/mo</span></p>
+                        <ul class="text-slate-300 text-sm mb-6 space-y-2">
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Everything in 1 Month</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Advanced analytics</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Priority support</li>
+                        </ul>
+                        <button class="w-full bg-neon-violet text-white font-bold py-3 rounded-lg hover:bg-neon-teal hover:text-space-dark transition duration-300">
+                            Choose Plan
+                        </button>
+                    </div>
+
+                    <div class="pricing-card featured p-8 rounded-2xl shadow-3xl flex flex-col items-center relative">
+                        <span class="absolute top-0 right-0 -mt-3 -mr-3 px-3 py-1 bg-neon-teal text-space-dark text-xs font-bold uppercase rounded-full shadow-md">Most Popular</span>
+                        <h3 class="text-2xl font-bold text-white mb-2">6 Months Plan</h3>
+                        <p class="text-4xl font-extrabold text-neon-teal mb-4">$19 <span class="text-base font-normal text-slate-500">/ user/mo</span></p>
+                        <ul class="text-slate-300 text-sm mb-6 space-y-2">
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Everything in 3 Months</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Dedicated account manager</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>24/7 technical support</li>
+                        </ul>
+                        <button class="w-full bg-neon-violet text-white font-bold py-3 rounded-lg hover:bg-neon-teal hover:text-space-dark transition duration-300">
+                            Choose Plan
+                        </button>
+                    </div>
+                    
+                    <div class="pricing-card p-8 rounded-2xl shadow-3xl flex flex-col items-center">
+                        <h3 class="text-2xl font-bold text-white mb-2">Free Trial</h3>
+                        <p class="text-4xl font-extrabold text-neon-teal mb-4">$0 <span class="text-base font-normal text-slate-500">/ forever</span></p>
+                        <ul class="text-slate-300 text-sm mb-6 space-y-2">
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Zero-state setup</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>1 Company + 1 Admin</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Up to 5 Employees/Managers</li>
+                        </ul>
+                        <button class="w-full bg-neon-teal text-space-dark font-bold py-3 rounded-lg hover:bg-white transition duration-300">
+                            Start Free Trial
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -160,6 +210,10 @@
             </div>
 
             <form id="auth-form" onsubmit="handleAuth(event)">
+                <div id="full-name-input-group" class="mb-4 hidden">
+                    <label for="full-name" class="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
+                    <input type="text" id="full-name" name="full-name" class="w-full p-3 rounded-lg bg-space-dark border border-space-light text-white focus:border-neon-teal focus:ring focus:ring-neon-teal/30">
+                </div>
                 <div class="mb-4">
                     <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email</label>
                     <input type="email" id="email" name="email" required class="w-full p-3 rounded-lg bg-space-dark border border-space-light text-white focus:border-neon-teal focus:ring focus:ring-neon-teal/30">

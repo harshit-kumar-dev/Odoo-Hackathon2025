@@ -1,4 +1,4 @@
-/* Custom styles for the 2029 aesthetic */
+        /* Custom styles for the 2029 aesthetic */
         body {
             background-color: #0D1117; /* space-dark */
             color: #E2E8F0; /* near-white text */
@@ -13,5 +13,21 @@
         .feature-card:hover {
             border-color: #00F0FF; /* neon-teal hover */
             box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        .pricing-card {
+            background-color: #161B22; /* space-mid */
+            border: 1px solid #21262D; /* space-light */
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover {
+            border-color: #7F00FF; /* neon-violet hover */
+            box-shadow: 0 0 20px rgba(127, 0, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        .pricing-card.featured {
+            border-color: #00F0FF; /* neon-teal */
+            background-image: linear-gradient(to bottom, #161B22, #0D1117);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
             transform: translateY(-5px);
         }

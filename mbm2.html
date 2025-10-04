@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenza: Corporate Finance OS (2029 Project)</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind Configuration for the futuristic theme
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'space-dark': '#0D1117',
+                        'space-mid': '#161B22',
+                        'space-light': '#21262D',
+                        'neon-teal': '#00F0FF', // Primary Accent
+                        'neon-violet': '#7F00FF', // Secondary Accent
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    keyframes: {
+                        'glow': {
+                            '0%, 100%': { boxShadow: '0 0 5px rgba(0, 240, 255, 0.4), 0 0 10px rgba(0, 240, 255, 0.2)' },
+                            '50%': { boxShadow: '0 0 15px rgba(0, 240, 255, 0.6), 0 0 25px rgba(0, 240, 255, 0.4)' },
+                        }
+                    },
+                    animation: {
+                        'neon-glow': 'glow 3s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for the 2029 aesthetic */
+        body {
+                background-color: #0d1117; /* space-dark */
+                color: #e2e8f0;
+        }
+        .header-bg {
+            background-image: linear-gradient(to top, #0D1117, #161B22);
+        }
+        .feature-card {
+            border: 1px solid #21262D; /* space-light border */
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: #00F0FF; /* neon-teal hover */
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        .pricing-card {
+            background-color: #161B22; /* space-mid */
+            border: 1px solid #21262D; /* space-light */
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover {
+            border-color: #7F00FF; /* neon-violet hover */
+            box-shadow: 0 0 20px rgba(127, 0, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        .pricing-card.featured {
+            border-color: #00F0FF; /* neon-teal */
+            background-image: linear-gradient(to bottom, #161B22, #0D1117);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <header class="sticky top-0 z-50 header-bg backdrop-blur-md bg-opacity-80 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="flex items-center space-x-2 text-neon-teal hover:text-white transition duration-300">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12L7 9L11 13L16 8L20 12" stroke="#00F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 8H13.5C12.6716 8 12 8.67157 12 9.5V11M8 17C8 16.1716 8.67157 15.5 9.5 15.5H12M14 4H10C7.79086 4 6 5.79086 6 8V16C6 18.2091 7.79086 20 10 20H14C16.2091 20 18 18.2091 18 16V8C18 5.79086 16.2091 4 14 4Z" stroke="#7F00FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="text-2xl font-extrabold tracking-tight">Expenza<span class="text-neon-violet">.OS</span></span>
+                </a>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-white hover:text-neon-teal transition duration-200 p-2 rounded-lg">Home</a>
+                    <a href="#features" class="nav-link text-white hover:text-neon-teal transition duration-200 p-2 rounded-lg">Architecture</a>
+                    <a href="#pricing" class="nav-link text-white hover:text-neon-teal transition duration-200 p-2 rounded-lg">Pricing</a>
+                    <a href="#contact" class="nav-link text-white hover:text-neon-teal transition duration-200 p-2 rounded-lg">Contact</a>
+                </nav>
+
+                <div class="hidden md:flex space-x-3 items-center">
+                    <button id="login-btn-desktop" class="auth-btn border border-neon-teal text-neon-teal px-4 py-2 rounded-full hover:bg-neon-teal hover:text-space-dark transition duration-300">Login</button>
+                    <button id="signup-btn-desktop" class="auth-btn bg-neon-violet text-white px-4 py-2 rounded-full hover:bg-neon-teal hover:shadow-lg hover:shadow-neon-teal/50 transition duration-300">Sign Up</button>
+                </div>
+
+                <button id="mobile-menu-toggle" class="md:hidden text-neon-teal p-2 rounded-md hover:bg-space-light transition duration-200">
+                    <i class="ph ph-list text-3xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-space-mid shadow-2xl transition-all duration-300 overflow-hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-space-light hover:text-neon-teal">Home</a>
+                <a href="#features" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-space-light hover:text-neon-teal">Architecture</a>
+                <a href="#pricing" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-space-light hover:text-neon-teal">Pricing</a>
+                <a href="#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-space-light hover:text-neon-teal">Contact</a>
+            </div>
+            <div class="pb-4 pt-2 border-t border-space-light flex flex-col space-y-2 px-4">
+                <button id="login-btn-mobile" class="auth-btn border border-neon-teal text-neon-teal w-full py-2 rounded-lg hover:bg-neon-teal hover:text-space-dark transition duration-300">Login</button>
+                <button id="signup-btn-mobile" class="auth-btn bg-neon-violet text-white w-full py-2 rounded-lg hover:bg-neon-teal hover:shadow-lg hover:shadow-neon-teal/50 transition duration-300">Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="relative overflow-hidden pt-24 pb-32 lg:pt-40 lg:pb-48 text-center">
+            <div class="absolute inset-0 z-0 opacity-10" style="background-image: radial-gradient(#21262D 1px, transparent 1px); background-size: 40px 40px;"></div>
+            <div class="relative z-10 max-w-4xl mx-auto px-4">
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tighter mb-6">
+                    The <span class="text-neon-teal animate-neon-glow">Autonomous</span> Corporate OS.
+                </h1>
+                <p class="text-xl sm:text-2xl text-slate-400 mb-10 max-w-2xl mx-auto">
+                    Expenza automatically structures your entire finance department from the first sign-up. Zero setup time, maximum compliance.
+                </p>
+                <button id="cta-start-btn" class="bg-neon-teal text-space-dark font-bold text-lg px-8 py-3 rounded-full shadow-lg shadow-neon-teal/50 hover:bg-white transition transform hover:scale-105 duration-300">
+                    Launch Your Finance Core
+                </button>
+                <p class="text-sm text-slate-500 mt-4">Start free, no card required.</p>
+            </div>
+        </section>
+
+        <section id="features" class="py-20 sm:py-32 bg-space-mid">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-neon-teal font-semibold uppercase tracking-widest">Initial Boot Sequence</span>
+                    <h2 class="text-4xl font-bold mt-3 text-white">Automated First-Run Architecture</h2>
+                    <p class="text-lg text-slate-400 mt-4">The system self-initializes the core data structure to meet your operational requirements.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="feature-card bg-space-dark p-8 rounded-xl shadow-2xl">
+                        <i class="ph ph-rocket-launch text-4xl text-neon-teal mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 text-white">Phase 1: Zero-State Setup</h3>
+                        <p class="text-slate-400">On first login, the system auto-generates your foundational structure:</p>
+                        <ul class="text-slate-300 mt-4 space-y-2 text-sm">
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>New Company Entity created.</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Currency set based on geopolitical environment.</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Primary Admin User auto-created and assigned owner role.</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card bg-space-dark p-8 rounded-xl shadow-2xl">
+                        <i class="ph ph-users-three text-4xl text-neon-teal mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 text-white">Phase 2: User and Role Provisioning</h3>
+                        <p class="text-slate-400">The Admin gains immediate tools to scale the organization rapidly:</p>
+                        <ul class="text-slate-300 mt-4 space-y-2 text-sm">
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Create and onboard new Employees and Managers.</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Assign/re-assign roles (Employee, Manager) in real-time.</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Granular permissions and access control defined by role.</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card bg-space-dark p-8 rounded-xl shadow-2xl">
+                        <i class="ph ph-tree-structure text-4xl text-neon-teal mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 text-white">Phase 3: Relationship Mapping</h3>
+                        <p class="text-slate-400">Build the approval matrix for expense and resource management:</p>
+                        <ul class="text-slate-300 mt-4 space-y-2 text-sm">
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Define manager-employee reporting lines.</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Instantly update managerial relationships.</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Automated workflow routing based on defined hierarchy.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="py-20 sm:py-32">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <span class="text-neon-teal font-semibold uppercase tracking-widest">Pricing Matrix</span>
+                <h2 class="text-4xl font-bold mt-3 text-white">Scalable Finance, Predictable Cost</h2>
+                <p class="text-lg text-slate-400 mt-4">Pricing plans for the next decade of corporate efficiency.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+                    
+                    <div class="pricing-card p-8 rounded-2xl shadow-3xl flex flex-col items-center">
+                        <h3 class="text-2xl font-bold text-white mb-2">1 Month Plan</h3>
+                        <p class="text-4xl font-extrabold text-neon-teal mb-4">$5 <span class="text-base font-normal text-slate-500">/ user/mo</span></p>
+                        <ul class="text-slate-300 text-sm mb-6 space-y-2">
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Automated setup</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Basic reporting dashboard</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Standard support</li>
+                        </ul>
+                        <button class="w-full bg-neon-violet text-white font-bold py-3 rounded-lg hover:bg-neon-teal hover:text-space-dark transition duration-300">
+                            Choose Plan
+                        </button>
+                    </div>
+
+                    <div class="pricing-card p-8 rounded-2xl shadow-3xl flex flex-col items-center">
+                        <h3 class="text-2xl font-bold text-white mb-2">3 Months Plan</h3>
+                        <p class="text-4xl font-extrabold text-neon-teal mb-4">$10 <span class="text-base font-normal text-slate-500">/ user/mo</span></p>
+                        <ul class="text-slate-300 text-sm mb-6 space-y-2">
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Everything in 1 Month</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Advanced analytics</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Priority support</li>
+                        </ul>
+                        <button class="w-full bg-neon-violet text-white font-bold py-3 rounded-lg hover:bg-neon-teal hover:text-space-dark transition duration-300">
+                            Choose Plan
+                        </button>
+                    </div>
+
+                    <div class="pricing-card featured p-8 rounded-2xl shadow-3xl flex flex-col items-center relative">
+                        <span class="absolute top-0 right-0 -mt-3 -mr-3 px-3 py-1 bg-neon-teal text-space-dark text-xs font-bold uppercase rounded-full shadow-md">Most Popular</span>
+                        <h3 class="text-2xl font-bold text-white mb-2">6 Months Plan</h3>
+                        <p class="text-4xl font-extrabold text-neon-teal mb-4">$19 <span class="text-base font-normal text-slate-500">/ user/mo</span></p>
+                        <ul class="text-slate-300 text-sm mb-6 space-y-2">
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Everything in 3 Months</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Dedicated account manager</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>24/7 technical support</li>
+                        </ul>
+                        <button class="w-full bg-neon-violet text-white font-bold py-3 rounded-lg hover:bg-neon-teal hover:text-space-dark transition duration-300">
+                            Choose Plan
+                        </button>
+                    </div>
+                    
+                    <div class="pricing-card p-8 rounded-2xl shadow-3xl flex flex-col items-center">
+                        <h3 class="text-2xl font-bold text-white mb-2">Free Trial</h3>
+                        <p class="text-4xl font-extrabold text-neon-teal mb-4">$0 <span class="text-base font-normal text-slate-500">/ forever</span></p>
+                        <ul class="text-slate-300 text-sm mb-6 space-y-2">
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Zero-state setup</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>1 Company + 1 Admin</li>
+                            <li class="flex items-center"><i class="ph ph-check-circle text-neon-violet mr-2"></i>Up to 5 Employees/Managers</li>
+                        </ul>
+                        <button class="w-full bg-neon-teal text-space-dark font-bold py-3 rounded-lg hover:bg-white transition duration-300">
+                            Start Free Trial
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact" class="bg-space-mid border-t border-space-light mt-16 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <a href="#" class="flex justify-center items-center space-x-2 text-neon-teal hover:text-white transition duration-300 mb-6">
+                <i class="ph ph-chart-bar text-3xl"></i>
+                <span class="text-2xl font-extrabold tracking-tight">Expenza<span class="text-neon-violet">.OS</span></span>
+            </a>
+            <p class="text-slate-500 text-sm">&copy; 2029 Expenza Corp. | Built for the future of decentralized finance. | All rights reserved.</p>
+            <div class="mt-4 space-x-4 text-sm">
+                <a href="#" class="text-slate-400 hover:text-neon-teal transition">Privacy Policy</a>
+                <a href="#" class="text-slate-400 hover:text-neon-teal transition">Terms of Service</a>
+                <a href="#" class="text-slate-400 hover:text-neon-teal transition">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="auth-modal" class="hidden fixed inset-0 z-[100] bg-space-dark/90 backdrop-blur-sm flex items-center justify-center p-4" onclick="closeModal(event)">
+        <div class="bg-space-mid p-8 rounded-2xl w-full max-w-md shadow-2xl border border-neon-teal/50" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="modal-title" class="text-2xl font-bold text-white">Login to Expenza</h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-neon-teal transition">
+                    <i class="ph ph-x-circle text-2xl"></i>
+                </button>
+            </div>
+
+            <form id="auth-form" onsubmit="handleAuth(event)">
+                <div id="full-name-input-group" class="mb-4 hidden">
+                    <label for="full-name" class="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
+                    <input type="text" id="full-name" name="full-name" class="w-full p-3 rounded-lg bg-space-dark border border-space-light text-white focus:border-neon-teal focus:ring focus:ring-neon-teal/30">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                    <input type="email" id="email" name="email" required class="w-full p-3 rounded-lg bg-space-dark border border-space-light text-white focus:border-neon-teal focus:ring focus:ring-neon-teal/30">
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-sm font-medium text-slate-300 mb-2">Password</label>
+                    <input type="password" id="password" name="password" required class="w-full p-3 rounded-lg bg-space-dark border border-space-light text-white focus:border-neon-teal focus:ring focus:ring-neon-teal/30">
+                </div>
+                                <div id="confirm-password-input-group" class="mb-4 hidden">
+                    <label for="confirm-password" class="block text-sm font-medium text-slate-300 mb-2">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" class="w-full p-3 rounded-lg bg-space-dark border border-space-light text-white focus:border-neon-teal focus:ring focus:ring-neon-teal/30">
+                </div>
+                                <div id="country-input-group" class="mb-6 hidden">
+                    <label for="country" class="block text-sm font-medium text-slate-300 mb-2">Country</label>
+                    <select id="country" name="country" class="w-full p-3 rounded-lg bg-space-dark border border-space-light text-white focus:border-neon-teal focus:ring focus:ring-neon-teal/30">
+                        <option value="" disabled selected>Select your country</option>
+                        <option value="usa">United States</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="india">India</option>
+                        <option value="germany">Germany</option>
+                    </select>
+                </div>
+                <button type="submit" id="submit-btn" class="w-full bg-neon-teal text-space-dark font-bold py-3 rounded-lg hover:bg-white transition transform hover:scale-[1.01] duration-200">
+                    Login
+                </button>
+            </form>
+
+            <div class="mt-6 text-center">
+                <p id="toggle-text" class="text-sm text-slate-400">
+                    Don't have an account? <a href="#" onclick="toggleMode(event, 'signup')" class="text-neon-violet hover:text-neon-teal font-medium transition">Sign up now</a>.
+                </p>
+            </div>
+             <div id="message-box" class="hidden mt-4 p-3 bg-neon-teal/20 text-neon-teal border border-neon-teal rounded-lg text-sm" role="alert"></div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const authModal = document.getElementById('auth-modal');
+            const loginBtns = document.querySelectorAll('#login-btn-desktop, #login-btn-mobile');
+            const signupBtns = document.querySelectorAll('#signup-btn-desktop, #signup-btn-mobile');
+            const ctaBtn = document.getElementById('cta-start-btn');
+            const modalTitle = document.getElementById('modal-title');
+            const submitBtn = document.getElementById('submit-btn');
+            const toggleText = document.getElementById('toggle-text');
+            const messageBox = document.getElementById('message-box');
+            const fullNameInputGroup = document.getElementById('full-name-input-group');
+            const fullNameInput = document.getElementById('full-name');
+
+            // NEW VARIABLE DECLARATIONS
+            const confirmPasswordInputGroup = document.getElementById('confirm-password-input-group');
+            const confirmPasswordInput = document.getElementById('confirm-password');
+            const countryInputGroup = document.getElementById('country-input-group');
+            const countryInput = document.getElementById('country');
+
+            let currentMode = 'login'; // 'login' or 'signup'
+
+            // --- 1. Mobile Menu Toggle Logic ---
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                // Change icon for better UX
+                const icon = mobileMenuToggle.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('ph-x');
+                    icon.classList.add('ph-list');
+                } else {
+                    icon.classList.remove('ph-list');
+                    icon.classList.add('ph-x');
+                }
+            });
+
+            // --- 2. Smooth Scrolling for Navigation Links ---
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                         mobileMenu.classList.add('hidden');
+                         mobileMenuToggle.querySelector('i').classList.remove('ph-x');
+                         mobileMenuToggle.querySelector('i').classList.add('ph-list');
+                    }
+
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - document.querySelector('header').offsetHeight, // Offset by header height
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // CTA button also triggers signup
+            ctaBtn.addEventListener('click', () => {
+                openModal('signup');
+            });
+
+
+            // --- 3. Modal Control Logic ---
+
+            const openModal = (mode) => {
+                currentMode = mode;
+                authModal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden'); // Prevent background scrolling
+                updateModalUI(mode);
+                messageBox.classList.add('hidden'); // Clear any previous messages
+            };
+
+            window.closeModal = (event) => {
+                if (event && event.target !== authModal) return; // Only close if clicking the backdrop
+                authModal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            };
+
+            loginBtns.forEach(btn => btn.addEventListener('click', () => openModal('login')));
+            signupBtns.forEach(btn => btn.addEventListener('click', () => openModal('signup')));
+
+
+            const updateModalUI = (mode) => {
+                if (mode === 'login') {
+                    modalTitle.textContent = 'Access the Expenza Console';
+                    submitBtn.textContent = 'Login';
+                    toggleText.innerHTML = 'Don\'t have an account? <a href="#" onclick="toggleMode(event, \'signup\')" class="text-neon-violet hover:text-neon-teal font-medium transition">Sign up now</a>.';
+                    // Hide signup-specific fields
+                    fullNameInputGroup.classList.add('hidden');
+                    confirmPasswordInputGroup.classList.add('hidden');
+                    countryInputGroup.classList.add('hidden');
+                    // Remove required attributes
+                    fullNameInput.removeAttribute('required');
+                    confirmPasswordInput.removeAttribute('required');
+                    countryInput.removeAttribute('required');
+                } else { // signup mode
+                    modalTitle.textContent = 'Launch Your Corporate OS';
+                    submitBtn.textContent = 'Auto-Setup & Sign Up';
+                    toggleText.innerHTML = 'Already have an Admin account? <a href="#" onclick="toggleMode(event, \'login\')" class="text-neon-violet hover:text-neon-teal font-medium transition">Login here</a>.';
+                    // Show signup-specific fields
+                    fullNameInputGroup.classList.remove('hidden');
+                    confirmPasswordInputGroup.classList.remove('hidden');
+                    countryInputGroup.classList.remove('hidden');
+                    // Add required attributes
+                    fullNameInput.setAttribute('required', 'true');
+                    confirmPasswordInput.setAttribute('required', 'true');
+                    countryInput.setAttribute('required', 'true');
+                }
+            };
+
+            window.toggleMode = (event, mode) => {
+                event.preventDefault();
+                updateModalUI(mode);
+                currentMode = mode;
+                messageBox.classList.add('hidden'); // Clear previous messages
+            };
+
+            // --- 4. Simulated Auth Handling ---
+            window.handleAuth = (event) => {
+                event.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const action = currentMode === 'signup' ? 'Sign Up' : 'Login';
+
+                // NEW: Password and Country validation for signup mode
+                if (currentMode === 'signup') {
+                    const confirmPassword = confirmPasswordInput.value;
+                    const country = countryInput.value;
+                    if (password !== confirmPassword) {
+                        messageBox.textContent = '❌ Error: Passwords do not match. Please try again.';
+                        messageBox.classList.remove('hidden');
+                        return; // Stop the function
+                    }
+                    if (country === "") {
+                        messageBox.textContent = '❌ Error: Please select a country.';
+                        messageBox.classList.remove('hidden');
+                        return; // Stop the function
+                    }
+                }
+
+                // Display loading state
+                submitBtn.textContent = `${action}ing...`;
+                submitBtn.disabled = true;
+
+                // Simulate API call delay
+                setTimeout(() => {
+                    submitBtn.textContent = action;
+                    submitBtn.disabled = false;
+
+                    let successMessage = '';
+                    if (currentMode === 'signup') {
+                        // Simulated Company/Admin Creation Process
+                        const fullName = fullNameInput.value;
+                        successMessage = `🚀 Success! Welcome, ${fullName}. Your Company and Admin user have been auto-created. Redirecting to the Setup Dashboard...`;
+                    } else {
+                        successMessage = `✅ Success! Logging in Admin (${email}). Redirecting to the main console...`;
+                    }
+
+                    messageBox.textContent = successMessage;
+                    messageBox.classList.remove('hidden');
+
+                    // Optional: Close modal after a delay and refresh page (simulating redirection)
+                    setTimeout(() => {
+                         // document.getElementById('auth-form').reset();
+                         // closeModal(); // Don't close, let the user see the success message
+                         // For a real app, this is where window.location.href would change.
+                    }, 3000);
+
+                }, 1500); // 1.5 seconds delay
+            };
+        });
+    </script>
+
+</body>
+</html>
