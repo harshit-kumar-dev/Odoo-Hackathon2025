@@ -1,0 +1,312 @@
+/* --- Global Reset and Dark Theme Setup (Based on Expenga OS Video) --- */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Permanent+Marker&display=swap'); /* Keep for compatibility if needed, but 'Inter' is primary */
+
+:root {
+    /* Colors inspired by Expenga OS video */
+    --primary-bg: #100d1e; /* Deep dark background */
+    --secondary-bg: #1c182c; /* Slightly lighter background for cards/containers */
+    --primary-text: #f0f0f0; /* Off-white text */
+    --accent-color-purple: #6a5acd; /* Primary purple accent */
+    --accent-color-blue: #00bcd4; /* Cyan/Blue accent for some elements (like links/hovers) */
+    --border-color: #332e4d; /* Subtle border color */
+    --font-family-sans: 'Inter', sans-serif;
+    --font-family-sketch: 'Kalam', cursive; /* Fallback for sketch elements if needed */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    font-family: var(--font-family-sans);
+    line-height: 1.6;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* --- Header & Navigation (Matching Expenga OS Top Bar) --- */
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: var(--primary-bg); /* Use primary BG */
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--primary-text);
+    text-decoration: none;
+}
+
+.logo-icon {
+    /* Placeholder for a logo icon (e.g., a simple SVG or font icon) */
+    color: var(--accent-color-purple);
+    margin-right: 5px;
+    font-size: 1.2em;
+}
+
+.nav-links a {
+    color: var(--primary-text);
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color-blue);
+}
+
+.auth-buttons button {
+    font-family: var(--font-family-sans);
+    font-size: 0.9em;
+    padding: 8px 18px;
+    margin-left: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: none; /* Remove sketch border */
+    margin-top: 0;
+}
+
+.auth-buttons .login-btn {
+    background: transparent;
+    color: var(--primary-text);
+    border: 1px solid var(--border-color);
+}
+
+.auth-buttons .login-btn:hover {
+    border-color: var(--accent-color-blue);
+    color: var(--accent-color-blue);
+}
+
+.auth-buttons .signup-btn {
+    background-color: var(--accent-color-purple);
+    color: var(--primary-text);
+    font-weight: 600;
+}
+
+.auth-buttons .signup-btn:hover {
+    background-color: var(--hover-color); /* Need a hover color variable */
+    filter: brightness(1.2);
+}
+
+/* --- Main Container Styling (Applied to both index.html .container and form.html .form-container) --- */
+
+.container, .form-container {
+    max-width: 1100px; /* Wider container for modern feel */
+    margin: 50px auto;
+    border: 1px solid var(--border-color); /* Clean border */
+    padding: 30px;
+    background-color: var(--secondary-bg); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+    border-radius: 8px;
+    position: relative;
+}
+
+/* --- Global Elements (Form Fields) --- */
+
+input[type="text"], input[type="number"], select {
+    background: var(--primary-bg); /* Dark background for inputs */
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--primary-text);
+    padding: 10px;
+    width: 100%;
+    font-family: var(--font-family-sans);
+    font-size: 0.9em;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, select:focus {
+    border-color: var(--accent-color-purple);
+}
+
+/* --- FORM.HTML Specific Styles (Modernized) --- */
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.attach-button {
+    font-family: var(--font-family-sans);
+    font-size: 0.9em;
+    background-color: var(--accent-color-purple);
+    border: none;
+    color: var(--primary-text);
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+.attach-button:hover {
+    filter: brightness(1.1);
+}
+
+.workflow-status {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-family: var(--font-family-sans);
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.separator {
+    color: var(--border-color);
+    font-size: 1.1em;
+}
+
+.status-item.active {
+    color: var(--accent-color-blue);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 40px;
+    margin-bottom: 40px;
+}
+
+.field-group label {
+    display: block;
+    font-size: 0.8em;
+    margin-bottom: 5px;
+    color: #b0b0b0; /* Lighter grey label */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.currency-symbol {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 1em;
+    color: var(--accent-color-blue);
+    pointer-events: none; /* Prevents symbol from interfering with input click */
+}
+
+.currency-text {
+    text-decoration: none; /* Remove sketch underline */
+    color: var(--accent-color-blue);
+}
+
+/* Annotation (Currency Conversion Note) - Styled as a modern hint box */
+.annotation-text {
+    background: var(--primary-bg);
+    border: 1px dashed var(--accent-color-purple);
+    border-radius: 4px;
+    padding: 15px;
+    margin: 20px 0;
+    font-size: 0.85em;
+    position: relative;
+    color: #ccc;
+    line-height: 1.4;
+}
+/* Remove sketch annotations */
+.annotation-text::before, .footer-note, .footer-note-right {
+    content: none !important;
+}
+
+/* Approval Mockup */
+.approval-mockup {
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+    margin-bottom: 30px;
+    font-family: var(--font-family-sans);
+    font-size: 0.85em;
+    color: #999;
+}
+
+.approval-line {
+    display: flex;
+    justify-content: space-between;
+}
+.approval-line .label:first-child { font-weight: 600; color: var(--primary-text); }
+.approval-line .label:nth-child(2) { color: var(--accent-color-blue); }
+
+/* Form Footer (Submit Button) */
+.form-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+/* Annotation (Currency Conversion Note) - Styled as a modern hint box */
+/* ... existing styles for .annotation-text ... */
+
+/* Remove sketch annotations */
+.annotation-text::before, .footer-note, .footer-note-right, .annotation-arrow { 
+    content: none !important; 
+    display: none !important; /* Adding display: none for safety */
+}
+
+/* Also remove the old currency symbol if it was a span */
+.currency-symbol {
+    /* Kept for reference but is removed from HTML in the fix above */
+    display: none;
+}
+
+.submit-button {
+    font-family: var(--font-family-sans);
+    font-size: 1.2em;
+    padding: 12px 40px;
+    background-color: var(--accent-color-purple);
+    border: none;
+    color: var(--primary-text);
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* --- UPLOAD SUCCESS MODAL (Modernized) --- */
+.modal-overlay {
+    /* Styles remain functional, just remove the sketch font/border */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    display: none; 
+}
+
+.modal-content {
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--accent-color-purple);
+    border-radius: 8px;
+    padding: 40px 60px;
+    text-align: center;
+    font-family: var(--font-family-sans);
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--accent-color-blue);
+    box-shadow: 0 0 20px var(--accent-color-purple);
+}

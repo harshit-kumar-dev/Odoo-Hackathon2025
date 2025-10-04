@@ -1,0 +1,220 @@
+/* --- Global Reset and Dark Theme Setup --- */
+
+:root {
+    /* Colors inspired by Expenga OS homepage */
+    --primary-bg: #100d1e; /* Deep dark background (dark purple/blue) */
+    --secondary-bg: #1c182c; /* Slightly lighter background for sections/cards */
+    --primary-text: #f0f0f0; /* Off-white text */
+    --accent-color: #6a5acd; /* Medium purple accent (used for main links/buttons) */
+    --hover-color: #8a7ff2; /* Lighter purple/blue for hover effects */
+    --border-color: #332e4d; /* Subtle border color */
+    --font-family-sans: 'Inter', sans-serif; /* A common, clean, modern font */
+}
+
+/* Import a clean modern font like Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    font-family: var(--font-family-sans);
+    line-height: 1.6;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    border: none; /* Remove the old chalkboard border */
+    padding: 20px;
+    position: relative;
+    background-color: var(--secondary-bg); /* Use secondary color for the main content area */
+    border-radius: 8px; /* Smooth corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+}
+
+/* --- Header & Tabs (Now using the Expenga OS style) --- */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 0 20px 0;
+    margin-bottom: 20px;
+}
+
+.tabs {
+    display: flex;
+    position: static; /* Remove old positioning */
+    gap: 10px;
+}
+
+.tab-button {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--primary-text);
+    padding: 8px 15px;
+    cursor: pointer;
+    font-family: var(--font-family-sans);
+    font-size: 0.9em;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid var(--border-border-color); /* Add back the bottom border */
+    margin-right: 0;
+}
+
+.tab-button:hover {
+    background-color: var(--border-color);
+}
+
+.tab-button.active {
+    background-color: var(--accent-color);
+    color: var(--primary-text);
+    border-color: var(--accent-color);
+}
+
+/* Remove old specific text annotations */
+.tab-button#upload-tab::before {
+    content: none;
+}
+
+.right-menu {
+    display: flex;
+    gap: 10px;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--primary-text);
+    border: none;
+    box-shadow: 0 0 5px rgba(106, 90, 205, 0.5); /* Glowing effect for menu items */
+}
+
+/* --- Workflow Bar (Styled as a modern progress tracker) --- */
+
+.workflow-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    margin-bottom: 30px;
+    font-family: var(--font-family-sans);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.status-step {
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    flex-grow: 1;
+    opacity: 0.6;
+}
+
+.status-step.active-step {
+    opacity: 1;
+    font-weight: bold;
+}
+
+.status-step p:first-child {
+    margin-bottom: 2px;
+    font-size: 1.1em;
+    color: var(--accent-color); /* Highlight the amount */
+}
+
+.status-step p:last-child {
+    font-size: 0.85em;
+    margin-top: 0;
+    color: var(--primary-text);
+}
+
+.arrow-line {
+    font-size: 1.5em;
+    margin: 0 5px;
+    color: var(--hover-color);
+    font-weight: 300;
+    flex-shrink: 0;
+}
+
+/* --- Table (Clean, minimalist dark mode table) --- */
+
+.table-container {
+    padding-top: 10px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden; /* Ensures borders/shadows work properly */
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color); /* Horizontal lines */
+}
+
+th {
+    background-color: var(--primary-bg);
+    border-bottom: 2px solid var(--accent-color); /* Accent line for header */
+    font-family: var(--font-family-sans);
+    font-weight: 600;
+    color: var(--primary-text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Remove vertical lines for a cleaner look */
+th, td {
+    border-right: none;
+}
+
+/* Hover effect on rows for better UX */
+tbody tr:hover {
+    background-color: rgba(106, 90, 205, 0.1); /* Subtle purple hover */
+}
+
+/* Status Badges */
+.status {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    font-family: var(--font-family-sans);
+    font-size: 0.8em;
+}
+
+.draft {
+    background-color: rgba(255, 193, 7, 0.2); /* Yellow background */
+    color: #FFC107; /* Yellow text */
+}
+
+.submitted {
+    background-color: rgba(76, 175, 80, 0.2); /* Green background */
+    color: #4CAF50; /* Green text */
+}
+
+/* Remove all old chalk/sketch annotations */
+.employee-col::before, .table-container::after {
+    content: none !important;
+}

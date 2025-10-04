@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Report Sketch</title>
+    <link rel="stylesheet" href="employee1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="tabs">
+                <button class="tab-button" id="upload-tab">Upload</button>
+                <button class="tab-button active" id="new-tab">New</button>
+            </div>
+            <div class="right-menu">
+                <span class="menu-item" style="background-color: #9C27B0;">C</span>
+                <span class="menu-item" style="background-color: #FF9800;">S</span>
+                <span class="menu-item" style="background-color: #4CAF50;">G</span>
+                <span class="menu-item" style="background-color: #2196F3;">D</span>
+                <span class="menu-item" style="background-color: #E91E63;">D</span>
+                <span class="menu-item" style="background-color: #03A9F4;">E</span>
+                <span class="menu-item" style="background-color: #FFC107;">O</span>
+            </div>
+        </div>
+
+        <div class="workflow-bar">
+            <div class="status-step">
+                <p>5467 rs</p>
+                <p>To submit.</p>
+            </div>
+            <span class="arrow-line">→</span>
+            <div class="status-step active-step">
+                <p>33674 rs</p>
+                <p>Waiting approval</p>
+            </div>
+            <span class="arrow-line">→</span>
+            <div class="status-step">
+                <p>500rs</p>
+                <p>Approved</p>
+            </div>
+        </div>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="employee-col">Employee</th>
+                        <th class="description-col">Description</th>
+                        <th class="date-col">Date</th>
+                        <th class="category-col">Category</th>
+                        <th class="paidby-col">Paid By</th>
+                        <th class="remarks-col">Remarks</th>
+                        <th class="amount-col">Amount</th>
+                        <th class="status-col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="row-1">
+                        <td class="employee-col">Cheery Lark</td>
+                        <td class="description-col">Honorable Buffalo</td>
+                        <td class="date-col"></td>
+                        <td class="category-col"></td>
+                        <td class="paidby-col"></td>
+                        <td class="remarks-col"></td>
+                        <td class="amount-col"></td>
+                        <td class="status-col"><span class="status draft" data-status="Draft">Draft</span></td>
+                    </tr>
+                    <tr id="row-2">
+                        <td class="employee-col">Sarah</td>
+                        <td class="description-col">Resuarat</td>
+                        <td class="date-col">Super Ant ct, 2025</td>
+                        <td class="category-col">Food</td>
+                        <td class="paidby-col">Sarah</td>
+                        <td class="remarks-col">None</td>
+                        <td class="amount-col">5000 rs</td>
+                        <td class="status-col"><span class="status submitted" data-status="Submitted">Submitted</span></td>
+                    </tr>
+                    <tr id="row-3">
+                        <td class="employee-col">Bouncy Dinosaur</td>
+                        <td class="description-col">Excited Oyster</td>
+                        <td class="date-col">Super Moose</td>
+                        <td class="category-col">Lawful Yak</td>
+                        <td class="paidby-col">Crow</td>
+                        <td class="remarks-col"></td>
+                        <td class="amount-col"></td>
+                        <td class="status-col"></td>
+                    </tr>
+                    <tr id="row-4">
+                        <td class="employee-col"></td>
+                        <td class="description-col"></td>
+                        <td class="date-col">DArkDev1L</td>
+                        <td class="category-col"></td>
+                        <td class="paidby-col"></td>
+                        <td class="remarks-col"></td>
+                        <td class="amount-col"></td>
+                        <td class="status-col"></td>
+                    </tr>
+                    <tr id="row-5">
+                        <td class="employee-col"></td>
+                        <td class="description-col"></td>
+                        <td class="date-col"></td>
+                        <td class="category-col"></td>
+                        <td class="paidby-col"></td>
+                        <td class="remarks-col"></td>
+                        <td class="amount-col"></td>
+                        <td class="status-col"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="employee1.js"></script>
+</body>
+</html>
