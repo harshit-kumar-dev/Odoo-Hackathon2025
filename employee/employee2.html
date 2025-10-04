@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Submission Form</title>
+    <link rel="stylesheet" href="employee-2.css"> 
+</head>
+<body class="form-page">
+
+<header class="top-header">
+    <a href="#" class="logo">
+        <span class="logo-icon">🚀</span> Expenza.OS
+    </a>
+</header>
+    
+<div class="form-container">
+        <div class="form-header">
+            <button class="attach-button">Attach Receipt</button>
+            <div class="workflow-status">
+                <span class="status-item">Draft</span>
+                <span class="separator">&gt;</span>
+                <span class="status-item active">Waiting approval</span>
+                <span class="separator">&gt;</span>
+                <span class="status-item">Approved</span>
+            </div>
+        </div>
+
+        <form id="expenseForm">
+            <div class="form-grid">
+                <div class="field-group">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" name="description" required>
+                </div>
+                <div class="field-group">
+                    <label for="expenseDate">Expense Date</label>
+                    <input type="text" id="expenseDate" name="expenseDate" value="4th Oct, 2025" required>
+                </div>
+                <div class="field-group">
+                    <label for="category">Category</label>
+                    <input type="text" id="category" name="category" value="Food" required>
+                </div>
+                <div class="field-group">
+                    <label for="paidBy">Paid by: </label>
+                    <select id="paidBy" name="paidBy">
+                        <option value="Unique Cormorant">Sarah</option>
+                        <option value="Unique Cormorant">Micthell</option>
+                        <option value="Unique Cormorant">Jhon</option>
+                        <option value="Unique Cormorant">Andreas</option>
+                    </select>
+                </div>
+                <div class="field-group">
+    <label for="totalAmount">Total amount in <span class="currency-text">currency selection</span></label>
+    <div style="position: relative; display: flex; align-items: center;">
+        <input type="number" id="totalAmount" name="totalAmount" value="567" required style="padding-right: 60px;">
+        <select id="currencySelect" name="currencySelect" style="width: auto; position: absolute; right: 5px; background: transparent; border: none; color: var(--accent-color-blue);">
+            <option value="USD">$ USD</option>
+            <option value="EUR">€ EUR</option>
+            <option value="GBP">£ GBP</option>
+            <option value="INR">₹ INR</option>
+            <option value="JPY">¥ JPY</option>
+        </select>
+    </div>
+</div>
+                <div class="field-group">
+                    <label for="remarks">Remarks</label>
+                    <input type="text" id="remarks" name="remarks">
+                </div>
+            </div>
+            
+
+                <span class="annotation-arrow"></span>
+                Employee can submit expense in any currency (currency in which he spent the money in receipt)
+                In manager's approval dashboard, the amount should get auto-converted to base currency of the company with real-time today's currency conversion rates.
+            </p>
+
+            <div class="approval-mockup">
+                <div class="approval-line">
+                    <span class="label">Sarah</span>
+                    <span class="label">Approved</span>
+                    <span class="label">12:44 4th Oct, 2025</span>
+                </div>
+            </div>
+
+            <div class="form-footer">
+                <button type="submit" class="submit-button">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script src="employee-2.js"></script>
+</body>
+</html>
