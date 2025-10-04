@@ -1,5 +1,3 @@
-
-
         // Tailwind Configuration for the futuristic theme
         tailwind.config = {
             darkMode: 'class',
@@ -27,8 +25,9 @@
                 }
             }
         }
+    
 
-
+        
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -41,6 +40,8 @@
             const submitBtn = document.getElementById('submit-btn');
             const toggleText = document.getElementById('toggle-text');
             const messageBox = document.getElementById('message-box');
+            const fullNameInputGroup = document.getElementById('full-name-input-group');
+            const fullNameInput = document.getElementById('full-name');
             let currentMode = 'login'; // 'login' or 'signup'
 
             // --- 1. Mobile Menu Toggle Logic ---
@@ -111,10 +112,14 @@
                     modalTitle.textContent = 'Access the Expenza Console';
                     submitBtn.textContent = 'Login';
                     toggleText.innerHTML = 'Don\'t have an account? <a href="#" onclick="toggleMode(event, \'signup\')" class="text-neon-violet hover:text-neon-teal font-medium transition">Sign up now</a>.';
+                    fullNameInputGroup.classList.add('hidden');
+                    fullNameInput.removeAttribute('required');
                 } else { // signup mode
                     modalTitle.textContent = 'Launch Your Corporate OS';
                     submitBtn.textContent = 'Auto-Setup & Sign Up';
                     toggleText.innerHTML = 'Already have an Admin account? <a href="#" onclick="toggleMode(event, \'login\')" class="text-neon-violet hover:text-neon-teal font-medium transition">Login here</a>.';
+                    fullNameInputGroup.classList.remove('hidden');
+                    fullNameInput.setAttribute('required', 'true');
                 }
             };
 
@@ -132,7 +137,7 @@
                 const action = currentMode === 'signup' ? 'Sign Up' : 'Login';
 
                 // Display loading state
-                submitBtn.textContent = `${action}ing...`;
+                submitBtn.textContent = `....`;
                 submitBtn.disabled = true;
 
                 // Simulate API call delay
@@ -143,7 +148,8 @@
                     let successMessage = '';
                     if (currentMode === 'signup') {
                         // Simulated Company/Admin Creation Process
-                        successMessage = `🚀 Success! Welcome, Admin (${email}). Your Company and Admin user have been auto-created. Redirecting to the Setup Dashboard...`;
+                        const fullName = fullNameInput.value;
+                        successMessage = `🚀 Success! Welcome, ${fullName}. Your Company and Admin user have been auto-created. Redirecting to the Setup Dashboard...`;
                     } else {
                         successMessage = `✅ Success! Logging in Admin (${email}). Redirecting to the main console...`;
                     }
