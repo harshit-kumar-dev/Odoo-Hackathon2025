@@ -1,0 +1,17 @@
+/* Custom styles for the 2029 aesthetic */
+        body {
+            background-color: #0D1117; /* space-dark */
+            color: #E2E8F0; /* near-white text */
+        }
+        .header-bg {
+            background-image: linear-gradient(to top, #0D1117, #161B22);
+        }
+        .feature-card {
+            border: 1px solid #21262D; /* space-light border */
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: #00F0FF; /* neon-teal hover */
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            transform: translateY(-5px);
+        }
